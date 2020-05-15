@@ -30,6 +30,12 @@ const fighterValidation = (fighterData, fighter) => {
             message: 'Health can not be higher than 100 and lower than 0'
         }
     }
+    if (fighterData.defense > 10 || fighterData.defense < 1) {
+        return {
+            status: 400,
+            message: 'Defense can not be higher than 10 and lower than 0'
+        }
+    }
     return {
         status: 200
     }

@@ -88,7 +88,7 @@ const createUserValid = (req, res, next) => {
     }
 }
 
-const updateUserValid = async (req, res, next) => {
+const updateUserValid = (req, res, next) => {
     const userData = req.body;
     const {
         id,
