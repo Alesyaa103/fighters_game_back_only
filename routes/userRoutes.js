@@ -88,9 +88,7 @@ router.put('/:id', updateUserValid, (req, res, next) => {
   } = req.params;
   const data = req.body;
   try {
-    console.log(data)
     const isOriginal = UserService.isOriginalUser(id, data)
-    
     if (!isOriginal) {
       throw ({
         message: "Email and phone number must be unique",
