@@ -17,6 +17,7 @@ router.post('/', createUserValid, (req, res, next) => {
     }
     res.data = user
   } catch (err) {
+    console.log(err)
     res.err = err
   } finally {
     next();

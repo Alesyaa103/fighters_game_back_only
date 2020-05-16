@@ -35,7 +35,7 @@ class UserService {
     isOriginalUser(id, user) {
         const userNumber = this.search({phoneNumber: user.phoneNumber})
         const userEmail = this.search({email: user.email})
-        if (userNumber){
+        if (userNumber) {
             if (id !== userNumber.id ) {
                 return null
             }

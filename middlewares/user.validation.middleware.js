@@ -26,32 +26,32 @@ const userValidation = (userData, allParams) => {
             message: 'Invalid type of value'
         }
     }
-    if (email.indexOf("@gmail.com") <= 0) {
+    if (email && email.indexOf("@gmail.com") <= 0) {
         return {
             status: 400,
             message: 'Add valid email with pattern gmail'
         }
     }
-    if (phoneNumber.indexOf("+380") !== 0) {
+    if (phoneNumber && phoneNumber.indexOf("+380") !== 0) {
         return {
             status: 400,
             message: 'Phone number witch begins with +380'
         }
     }
-    if (phoneNumber.length !== 13) {
+    if (phoneNumber && phoneNumber.length !== 13) {
         return {
             status: 400,
             message: 'Phone number must contain 12 numbers'
         }
     }
-    if (!phoneNumberRegex.test(phoneNumber.split("+380")[1])) {
+    if (phoneNumber && !phoneNumberRegex.test(phoneNumber.split("+380")[1])) {
         return {
             status: 400,
             message: 'Enter valid phone number'
         }
     }
 
-    if (password.length < 3) {
+    if (password && password.length < 3) {
         return {
             status: 400,
             message: 'Password must include more than 3 symbols'
@@ -95,7 +95,8 @@ const updateUserValid = (req, res, next) => {
         ...allParams
     } = user;
     try {
-        const validationErrors = userValidation(userData, allParams)
+        const validationErrors = userValidation(userData, allParams);
+        console.log(validationErrors)
         if (validationErrors.status !== 200) {
             throw (validationErrors)
         }
